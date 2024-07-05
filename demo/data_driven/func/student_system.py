@@ -10,6 +10,8 @@
 年龄: age
 性别: gender
 '''
+import yaml
+
 
 class Student(object):
 
@@ -85,6 +87,9 @@ class StudentManement(object):
                 return " 您输入的学号已存在，无法重复添加"
         else:
             self.stu_info.append(students)
+            with open('../data/data.yaml','a') as file:
+                list=[[sid,name,age,gender]]
+                yaml.safe_dump(list,file)
             print("您输入的学员信息已经成功录入")
             return " 添加成功"
     '''
